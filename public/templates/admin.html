@@ -1,0 +1,23 @@
+<div ng-controller="adminCtrl">
+	<p>Search: <input type="text" ng-model="search"></p>
+	<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Symbol number</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Marks</th>
+        <th ng-click="orderByMe('date')">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="student in students | filter:search | orderBy:myOrderBy">
+        <td>{{student.symbolNo}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.marks}}</td>
+        <td>{{student.date | date:'MM/dd/yy h:mm:ss a'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

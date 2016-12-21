@@ -1,0 +1,19 @@
+<div ng-controller="qstnCtrl">
+    <ol>
+        <li ng-repeat="qstn in qstns">
+        <h4>{{qstn.qstn}}</h4>
+             <label ng-repeat="opt in qstn.options" >
+       <input type="radio"
+              ng-model="qstn.selectedAnswer"
+              value="{{opt}}{{$parent.$index}}"
+              id="{{opt}}"
+              name="qstn{{$parent.$index}}"
+              ng-click="checkAnswer(opt,qstn)">{{opt}}
+     </label>
+  <!--    <input type="radio" name="qstn{{$index}}" ng-model="formData[$index]">
+     <input type="radio" name="qstn{{$index}}" ng-model="formData[$index]">
+     <input type="radio" name="qstn{{$index}}" ng-model="formData[$index]"> -->
+        </li>
+    </ol>
+    <button ng-click="submitQstns()" class="btn btn-primary">Done</button>
+</div>

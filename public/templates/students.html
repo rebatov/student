@@ -1,0 +1,63 @@
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+<div class="testbox" ng-controller="stuCtrl">
+    <h1>Student Information</h1>
+    <form name="myForm">
+        <label id="icon" for="name"><i class="icon-envelope "></i></label>
+        <input ng-pattern="/^\S+@\S+\.\S+$/" type="text" name="email" id="name" placeholder="Email" ng-model="stu.email" required/>
+        <div ng-show="myForm.email.$error.required && !myForm.email.$pristine">
+            <div class="alert alert-danger">
+                <strong>Email required</strong>
+            </div>
+        </div>
+        <div ng-show="submitted && myForm.email.$error.pattern">
+            <div class="alert alert-danger">
+                <strong>Email error</strong>
+            </div>
+        </div>
+        <label id="icon" for="name"><i class="icon-user"></i></label>
+        <input type="text" name="name" id="name" placeholder="Name" ng-model="stu.name" required/>
+        <div ng-show="myForm.name.$error.required && !myForm.name.$pristine">
+            <div class="alert alert-danger">
+                <strong>Name required</strong>
+            </div>
+        </div>
+        <label id="icon" for="name"><i class="icon-phone"></i></label>
+        <input ng-pattern="/^[0-9]*[1-9][0-9]*$/" ng-maxlength="10" ng-minlength="10" type="text" name="contact" id="name" placeholder="Contact" ng-model="stu.contact" required/>
+        <div ng-show="myForm.contact.$error.required && !myForm.contact.$pristine">
+            <div class="alert alert-danger">
+                <strong>Contact required</strong>
+            </div>
+        </div>
+        <div ng-show="submitted && myForm.contact.$error.pattern">
+            <div class="alert alert-danger">
+                <strong>Contact error</strong>
+            </div>
+        </div>
+        <div ng-show="submitted && myForm.contact.$error.minlength">
+            <div class="alert alert-danger">
+                <strong>Contact length less</strong>
+            </div>
+        </div>
+        <div ng-show="submitted && myForm.contact.$error.maxlength">
+            <div class="alert alert-danger">
+                <strong>Contact length more</strong>
+            </div>
+        </div>
+        <label id="icon" for="name"><i class="icon-info"></i></label>
+        <input type="text" name="symbol" id="name" placeholder="Symbol Number" ng-model="stu.sn" required/>
+        <div ng-show="myForm.symbol.$error.required && !myForm.symbol.$pristine">
+            <div class="alert alert-danger">
+                <strong>Symbol number required</strong>
+            </div>
+        </div>
+        <div class="gender">
+            <input class="rad" type="radio" value="m" id="male" name="gender" ng-model="stu.male" />
+            <label for="male" class="radio">Male</label>
+            <input class="rad" type="radio" value="f" id="female" name="gender" ng-model="stu.female" />
+            <label for="female" class="radio">Female</label>
+        </div>
+        <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
+        <button ng-click="submitStudent(myForm.$valid,stu)" class="button">Submit</button>
+    </form>
+</div>
